@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
                         content = content + "\nState: " + xpp.getAttributeValue(null, "state");
                     } else if (xpp.getName().equalsIgnoreCase("zip")) {
                         content = content + "\nZip: " + xpp.getAttributeValue(null, "zip");
+                    } else if (xpp.getName().equalsIgnoreCase("latitude")) {
+                        content = content + "\nLatitude: " + xpp.getAttributeValue(null, "latitude");
+                    } else if (xpp.getName().equalsIgnoreCase("longitude")) {
+                        content = content + "\nLongitude: " + xpp.getAttributeValue(null, "longitude");
                     }
                 }
                 eventType = xpp.next();

@@ -1,10 +1,14 @@
 package edu.rasmussen.mobile.project06;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Xml;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +37,11 @@ public class SubmitActivity extends AppCompatActivity {
         city = (EditText) findViewById(R.id.inputCityBox);
         state = (EditText) findViewById(R.id.inputStateBox);
         zip = (EditText) findViewById(R.id.inputZipCodeBox);
+        final Context gpsContext = getApplicationContext();
+        final String gpsMessage = "GPS in Progress, Please Wait.";
+        final int tDuration;
+        tDuration = Toast.LENGTH_SHORT;
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +50,30 @@ public class SubmitActivity extends AppCompatActivity {
                 cityS = city.getText().toString();
                 stateS = state.getText().toString();
                 zipS = zip.getText().toString();
+                String latitudeS = "";
+                String longitudeS = "";
+
+                LocationManager GPSLocManager = null;
+                LocationListener GPSLocListener;
+
+                GPSLocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                GPSLocListener = new GPSListener();
+                GPSLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, GPSLocListener);
+
+                if(GPSLocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    if(GPSListener.latitude>0) {
+                        latitudeS = ("Latitude: " + GPSListener.latitude);
+                        longitudeS = ("Longitude: " + GPSListener.longitude);
+
+                    } else {
+                        Toast tToast = Toast.makeText(gpsContext, gpsMessage, tDuration);
+                        tToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                        tToast.show();
+                    }
+                } else {
+                    latitudeS = ("GPS is not turned on...");
+                    longitudeS = ("GPS is not turned on...");
+                }
 
                 try {
                     FileOutputStream myFile = openFileOutput("locations.xml", SubmitActivity.MODE_APPEND);
@@ -82,6 +115,14 @@ public class SubmitActivity extends AppCompatActivity {
                         serializer.startTag(null, "zip");
                         serializer.attribute(null, "zip", zipS);
                         serializer.endTag(null, "zip");
+
+                        serializer.startTag(null, "latitude");
+                        serializer.attribute(null, "latitude", latitudeS);
+                        serializer.endTag(null, "latitude");
+
+                        serializer.startTag(null, "longitude");
+                        serializer.attribute(null, "longitude", longitudeS);
+                        serializer.endTag(null, "longitude");
 
                         serializer.endTag(null, "treasure");
                         serializer.endTag(null, "items");

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.LocationListener;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -11,7 +12,7 @@ import android.widget.Toast;
  * Created by nicho_000 on 9/5/2015.
  */
 
-public class GPSListener implements LocationListener {
+public class GPSListener extends AppCompatActivity implements LocationListener {
     public static double latitude;
     public static double longitude;
     Context tContext = getApplicationContext();
