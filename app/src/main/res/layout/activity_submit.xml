@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map_background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.rasmussen.mobile.project06.SubmitActivity">
+
+    <TextView
+        android:id="@+id/instructionsDescBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:background="#c0c0c0"
+        android:gravity="center"
+        android:text="Please Fill In The Fields\nThen Hit Submit To Save"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputDescBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instructionsDescBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="@string/descriptionInstructionsText"
+        android:maxLines="2"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputAddressBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputDescBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="@string/streetInstructionsText"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputCityBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputAddressBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="@string/cityInstructionsText"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputStateBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputCityBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="@string/stateInstructionsText"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputZipCodeBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputStateBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="@string/zipInstructionsText"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputZipCodeBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:onClick="SubmitLocation"
+        android:text="@string/submitButtonText" />
+
+</RelativeLayout>

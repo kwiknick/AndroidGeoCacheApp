@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Project06</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_submit">Submit New Location</string>
+    <string name="submitButtonText">Submit</string>
+    <string name="zipInstructionsText">Please Enter Zip Code</string>
+    <string name="stateInstructionsText">Please Enter The State</string>
+    <string name="cityInstructionsText">Please Enter The City</string>
+    <string name="streetInstructionsText">Please Enter Street Address</string>
+    <string name="descriptionInstructionsText">Please Enter A Description</string>
+    <string name="newLocationButtonText">Add A New Location</string>
+</resources>
