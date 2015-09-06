@@ -15,31 +15,31 @@ import android.widget.Toast;
 public class GPSListener extends AppCompatActivity implements LocationListener {
     public static double latitude;
     public static double longitude;
-    Context tContext = getApplicationContext();
+    /*Context tContext = getApplicationContext();
     String tDisabledText = "GPS is Disabled";
     String tEnabledText = "GPS is Enabled";
-    int tDuration = Toast.LENGTH_SHORT;
+    int tDuration = Toast.LENGTH_SHORT;*/
 
-    public Context gettContext() {
+    /*public Context gettContext() {
         return tContext;
     }
 
     public void settContext(Context tContext) {
         this.tContext = tContext;
-    }
+    }*/
 
     @Override
     public void onProviderDisabled(String provider) {
-        Toast tToast = Toast.makeText(tContext, tDisabledText, tDuration);
+        /*Toast tToast = Toast.makeText(tContext, tDisabledText, tDuration);
         tToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-        tToast.show();
+        tToast.show();*/
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        Toast tToast = Toast.makeText(tContext, tEnabledText, tDuration);
+        /*Toast tToast = Toast.makeText(tContext, tEnabledText, tDuration);
         tToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-        tToast.show();
+        tToast.show();*/
     }
 
     @Override

@@ -37,10 +37,6 @@ public class SubmitActivity extends AppCompatActivity {
         city = (EditText) findViewById(R.id.inputCityBox);
         state = (EditText) findViewById(R.id.inputStateBox);
         zip = (EditText) findViewById(R.id.inputZipCodeBox);
-        final Context gpsContext = getApplicationContext();
-        final String gpsMessage = "GPS in Progress, Please Wait.";
-        final int tDuration;
-        tDuration = Toast.LENGTH_SHORT;
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +46,12 @@ public class SubmitActivity extends AppCompatActivity {
                 cityS = city.getText().toString();
                 stateS = state.getText().toString();
                 zipS = zip.getText().toString();
-                String latitudeS = "";
-                String longitudeS = "";
+                Context gpsContext = getApplicationContext();
+                String gpsMessage = "GPS in Progress, Please Wait.";
+                int tDuration;
+                tDuration = Toast.LENGTH_SHORT;
+                String latitudeS = "0";
+                String longitudeS = "0";
 
                 LocationManager GPSLocManager = null;
                 LocationListener GPSLocListener;
@@ -69,6 +69,7 @@ public class SubmitActivity extends AppCompatActivity {
                         Toast tToast = Toast.makeText(gpsContext, gpsMessage, tDuration);
                         tToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                         tToast.show();
+                        System.out.println("This is inside the else statement.");
                     }
                 } else {
                     latitudeS = ("GPS is not turned on...");
