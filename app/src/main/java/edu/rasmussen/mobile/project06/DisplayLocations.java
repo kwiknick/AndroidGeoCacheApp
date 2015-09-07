@@ -1,12 +1,10 @@
 package edu.rasmussen.mobile.project06;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,25 +15,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.StringReader;
 
-public class MainActivity extends AppCompatActivity {
-
-    public void newLocation(View view) {
-        Intent intent = new Intent(this, SubmitActivity.class);
-        startActivity(intent);
-    }
-
-    public void displayLocations(View view) {
-        Intent intent = new Intent(this, DisplayLocations.class);
-        startActivity(intent);
-    }
+public class DisplayLocations extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //readFile();
+        setContentView(R.layout.activity_display_locations);
 
-        //Read text from file
         StringBuilder text = new StringBuilder();
 
         try {
@@ -95,13 +81,12 @@ public class MainActivity extends AppCompatActivity {
         if (content != null) {
             tv.setText(content);
         }
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_display_locations, menu);
         return true;
     }
 

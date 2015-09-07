@@ -20,14 +20,6 @@ public class GPSListener extends AppCompatActivity implements LocationListener {
     String tEnabledText = "GPS is Enabled";
     int tDuration = Toast.LENGTH_SHORT;*/
 
-    /*public Context gettContext() {
-        return tContext;
-    }
-
-    public void settContext(Context tContext) {
-        this.tContext = tContext;
-    }*/
-
     @Override
     public void onProviderDisabled(String provider) {
         /*Toast tToast = Toast.makeText(tContext, tDisabledText, tDuration);
