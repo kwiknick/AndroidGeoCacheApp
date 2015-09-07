@@ -9,24 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.rasmussen.mobile.project06.SubmitActivity">
 
-    <TextView
-        android:id="@+id/instructionsDescBox"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:background="#c0c0c0"
-        android:gravity="center"
-        android:text="Please Enter a New Location"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#010101" />
-
     <EditText
         android:id="@+id/inputDescBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/instructionsDescBox"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:background="#ffffff"

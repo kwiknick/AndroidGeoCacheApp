@@ -65,29 +65,22 @@ public class SubmitActivity extends AppCompatActivity {
                 String latitudeS = "0";
                 String longitudeS = "0";
 
-                LocationManager GPSLocManager = null;
-                LocationListener GPSLocListener;
+                GPSListener gps = new GPSListener(SubmitActivity.this);
 
-                GPSLocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-                GPSLocListener = new GPSListener();
-                GPSLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, GPSLocListener);
+                // Check if GPS enabled
+                if(gps.canGetLocation()) {
 
-                if(GPSLocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    if(GPSListener.latitude>0) {
-                        latitudeS = ("Latitude: " + GPSListener.latitude);
-                        longitudeS = ("Longitude: " + GPSListener.longitude);
+                    latitudeS = String.valueOf(gps.getLatitude());
+                    longitudeS = String.valueOf(gps.getLongitude());
 
-                    } else {
-                        Toast tToast = Toast.makeText(gpsContext, gpsMessage, tDuration);
-                        tToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-                        tToast.show();
-                        System.out.println("This is inside the else statement.");
-                    }
+                    // \n is for new line
+                    Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitudeS + "\nLong: " + longitudeS, Toast.LENGTH_LONG).show();
                 } else {
-                    latitudeS = ("GPS is not turned on...");
-                    longitudeS = ("GPS is not turned on...");
+                    // Can't get location.
+                    // GPS or network is not enabled.
+                    // Ask user to enable GPS/network in settings.
+                    gps.showSettingsAlert();
                 }
-
                 // create the initial xml document if it already does not exist
                 try {
                     File filename = new File(getFilesDir(), "example.xml");
