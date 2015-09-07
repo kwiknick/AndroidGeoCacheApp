@@ -15,10 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="0dp"
         android:background="#c0c0c0"
         android:gravity="center"
-        android:text="Please Fill In The Fields\nThen Hit Submit To Save"
+        android:text="Please Enter a New Location"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#010101" />
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructionsDescBox"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:backgroundTint="#64ffffff"
         android:gravity="center"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputDescBox"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:backgroundTint="#64ffffff"
         android:gravity="center"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputAddressBox"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:backgroundTint="#64ffffff"
         android:gravity="center"
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputCityBox"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:backgroundTint="#64ffffff"
         android:gravity="center"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputStateBox"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:backgroundTint="#64ffffff"
         android:gravity="center"
@@ -98,13 +98,73 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#010101" />
 
-    <Button
-        android:id="@+id/submitButton"
+    <EditText
+        android:id="@+id/inputClue1Box"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputZipCodeBox"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="Please Enter A Clue"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputClue2Box"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputClue1Box"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="Please Enter A Clue"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputAnswer1Box"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputClue2Box"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="Please Enter A Clue Answer"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <EditText
+        android:id="@+id/inputAnswer2Box"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputAnswer1Box"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="Please Enter A Clue Answer"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputAnswer2Box"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:onClick="SubmitLocation"
         android:text="@string/submitButtonText" />
 

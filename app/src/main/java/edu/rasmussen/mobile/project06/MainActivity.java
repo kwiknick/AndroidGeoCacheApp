@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder text = new StringBuilder();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/locations.xml"));
+            BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/example.xml"));
 
             String line = null;
 
@@ -59,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("Start document");
                 } else if (eventType == XmlPullParser.START_TAG) {
                     if (xpp.getName().equalsIgnoreCase("Description")) {
-                        content = "Description: " + xpp.getAttributeValue(null, "desc");
+                        if(content==null) {
+                            content = "Description: " + xpp.getAttributeValue(null, "desc");
+                        }
+                        else {
+                            content = content + "\n**************\nDescription: " + xpp.getAttributeValue(null, "desc");
+                        }
                     } else if (xpp.getName().equalsIgnoreCase("street")) {
                         content = content + "\nStreet: " + xpp.getAttributeValue(null, "street");
                     } else if (xpp.getName().equalsIgnoreCase("city")) {
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (xpp.getName().equalsIgnoreCase("longitude")) {
                         content = content + "\nLongitude: " + xpp.getAttributeValue(null, "longitude");
                     }
+
                 }
                 eventType = xpp.next();
             }
