@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by nicho_000 on 9/7/2015.
  */
-public class Item implements Serializable{
+public class Item implements Serializable {
 
     String desc;
     String clue1;
@@ -13,7 +13,7 @@ public class Item implements Serializable{
     String clue3;
     String answer1;
     String answer2;
-    String lat="0";
+    String lat = "0";
     String lon;
     String price;
     String name;
@@ -27,7 +27,7 @@ public class Item implements Serializable{
         this.distance = distance;
     }
 
-    int guess=0;
+    int guess = 0;
 
     public String getClue3() {
         return clue3;

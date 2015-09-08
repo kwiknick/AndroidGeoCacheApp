@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project06</string>
+    <string name="app_name">Find Those Treasures!</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_submit">Submit New Location</string>

@@ -109,7 +109,7 @@
         android:background="#ffffff"
         android:backgroundTint="#64ffffff"
         android:gravity="center"
-        android:hint="Please Enter A Clue"
+        android:hint="Please Enter Another Clue"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#010101" />
@@ -133,7 +133,7 @@
         android:id="@+id/inputNameBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputAnswer1Box"
+        android:layout_below="@+id/inputClue3Box"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:background="#ffffff"

@@ -3,13 +3,10 @@ package edu.rasmussen.mobile.project06;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Xml;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +17,6 @@ import android.widget.Toast;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 public class SubmitActivity extends AppCompatActivity {
@@ -41,10 +37,10 @@ public class SubmitActivity extends AppCompatActivity {
         city = (EditText) findViewById(R.id.inputCityBox);
         state = (EditText) findViewById(R.id.inputStateBox);
         zip = (EditText) findViewById(R.id.inputZipCodeBox);
-        clue1 =  (EditText) findViewById(R.id.inputClue1Box);
-        clue2 =  (EditText) findViewById(R.id.inputClue2Box);
+        clue1 = (EditText) findViewById(R.id.inputClue1Box);
+        clue2 = (EditText) findViewById(R.id.inputClue2Box);
         clue3 = (EditText) findViewById(R.id.inputClue3Box);
-        name =  (EditText) findViewById(R.id.inputNameBox);
+        name = (EditText) findViewById(R.id.inputNameBox);
 
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +53,7 @@ public class SubmitActivity extends AppCompatActivity {
                 zipS = zip.getText().toString();
                 clue1S = clue1.getText().toString();
                 clue2s = clue2.getText().toString();
-                clue3s=clue3.getText().toString();
+                clue3s = clue3.getText().toString();
                 nameS = name.getText().toString();
                 Context gpsContext = getApplicationContext();
                 String gpsMessage = "GPS in Progress, Please Wait.";
@@ -69,7 +65,7 @@ public class SubmitActivity extends AppCompatActivity {
                 GPSListener gps = new GPSListener(SubmitActivity.this);
 
                 // Check if GPS enabled
-                if(gps.canGetLocation()) {
+                if (gps.canGetLocation()) {
 
                     latitudeS = String.valueOf(gps.getLatitude());
                     longitudeS = String.valueOf(gps.getLongitude());
@@ -84,10 +80,10 @@ public class SubmitActivity extends AppCompatActivity {
                 }
                 // create the initial xml document if it already does not exist
                 try {
-                    File filename = new File(getFilesDir(), "example1.xml");
+                    File filename = new File(getFilesDir(), "locations.xml");
 
                     if (!filename.exists()) {
-                        myFile = openFileOutput("example1.xml", Activity.MODE_APPEND);
+                        myFile = openFileOutput("locations.xml", Activity.MODE_APPEND);
 
                         // create a new XmlSerializer object
                         serializer = Xml.newSerializer();
@@ -101,10 +97,10 @@ public class SubmitActivity extends AppCompatActivity {
                         // set indentation option
                         serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
 
-                          writeItem(latitudeS, longitudeS);
+                        writeItem(latitudeS, longitudeS);
                     } else {
                         // use myFile as your xml serializer and set to UTF-8 encoding
-                        myFile = openFileOutput("example1.xml", Activity.MODE_APPEND);
+                        myFile = openFileOutput("locations.xml", Activity.MODE_APPEND);
 
                         // create a new XmlSerializer object
                         serializer = Xml.newSerializer();
@@ -122,8 +118,8 @@ public class SubmitActivity extends AppCompatActivity {
                     // close the file stream
                     myFile.close();
 
-                    Toast.makeText(getBaseContext(),"Location Saved Successfully",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent("android.intent.action.MAINACTIVITY");
+                    Toast.makeText(getBaseContext(), "Location Saved Successfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent("android.intent.action.MAINACTIVITY");
                     startActivity(intent);
                 } catch (Exception e) {
                     Log.e("Exception: ", e.getMessage());
@@ -133,81 +129,80 @@ public class SubmitActivity extends AppCompatActivity {
             }
 
 
-
-         });
+        });
     }
 
-  public void writeItem(String latitudeS, String longitudeS){
+    public void writeItem(String latitudeS, String longitudeS) {
 
 
         // Write <?xml declaration with encoding
 
-try {
-    // set indentation option
-    serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+        try {
+            // set indentation option
+            serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
 
-    // start a new top level tag and other tags
-    serializer.startTag(null, "items");
-    serializer.startTag(null, "treasure");
+            // start a new top level tag and other tags
+            serializer.startTag(null, "items");
+            serializer.startTag(null, "treasure");
 
-    serializer.startTag(null, "name");
-    serializer.attribute(null, "name", nameS);
-    serializer.endTag(null, "name");
+            serializer.startTag(null, "name");
+            serializer.attribute(null, "name", nameS);
+            serializer.endTag(null, "name");
 
-    serializer.startTag(null, "description");
-    serializer.attribute(null, "desc", descriptionS);
-    serializer.endTag(null, "description");
+            serializer.startTag(null, "description");
+            serializer.attribute(null, "desc", descriptionS);
+            serializer.endTag(null, "description");
 
-    serializer.startTag(null, "street");
-    serializer.attribute(null, "street", streetS);
-    serializer.endTag(null, "street");
+            serializer.startTag(null, "street");
+            serializer.attribute(null, "street", streetS);
+            serializer.endTag(null, "street");
 
-    serializer.startTag(null, "city");
-    serializer.attribute(null, "city", cityS);
-    serializer.endTag(null, "city");
+            serializer.startTag(null, "city");
+            serializer.attribute(null, "city", cityS);
+            serializer.endTag(null, "city");
 
-    serializer.startTag(null, "state");
-    serializer.attribute(null, "state", stateS);
-    serializer.endTag(null, "state");
+            serializer.startTag(null, "state");
+            serializer.attribute(null, "state", stateS);
+            serializer.endTag(null, "state");
 
-    serializer.startTag(null, "zip");
-    serializer.attribute(null, "zip", zipS);
-    serializer.endTag(null, "zip");
+            serializer.startTag(null, "zip");
+            serializer.attribute(null, "zip", zipS);
+            serializer.endTag(null, "zip");
 
-    serializer.startTag(null, "latitude");
-    serializer.attribute(null, "latitude", latitudeS);
-    serializer.endTag(null, "latitude");
+            serializer.startTag(null, "latitude");
+            serializer.attribute(null, "latitude", latitudeS);
+            serializer.endTag(null, "latitude");
 
-    serializer.startTag(null, "longitude");
-    serializer.attribute(null, "longitude", longitudeS);
-    serializer.endTag(null, "longitude");
+            serializer.startTag(null, "longitude");
+            serializer.attribute(null, "longitude", longitudeS);
+            serializer.endTag(null, "longitude");
 
-    serializer.startTag(null, "clue1");
-    serializer.attribute(null, "clue1", clue1S);
-    serializer.endTag(null, "clue1");
-
-
-    serializer.startTag(null, "clue2");
-    serializer.attribute(null, "clue2", clue2s);
-    serializer.endTag(null, "clue2");
+            serializer.startTag(null, "clue1");
+            serializer.attribute(null, "clue1", clue1S);
+            serializer.endTag(null, "clue1");
 
 
-    serializer.startTag(null, "clue3");
-    serializer.attribute(null, "clue3", clue3s);
-    serializer.endTag(null, "clue3");
-
-    serializer.startTag(null, "points");
-    serializer.attribute(null, "points", "100");
-    serializer.endTag(null, "points");
-
-    serializer.endTag(null, "treasure");
-    serializer.endTag(null, "items");
-}catch (Exception e){
+            serializer.startTag(null, "clue2");
+            serializer.attribute(null, "clue2", clue2s);
+            serializer.endTag(null, "clue2");
 
 
-}
+            serializer.startTag(null, "clue3");
+            serializer.attribute(null, "clue3", clue3s);
+            serializer.endTag(null, "clue3");
 
+            serializer.startTag(null, "points");
+            serializer.attribute(null, "points", "100");
+            serializer.endTag(null, "points");
+
+            serializer.endTag(null, "treasure");
+            serializer.endTag(null, "items");
+        } catch (Exception e) {
+            Log.e("Exception: ", e.getMessage());
         }
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

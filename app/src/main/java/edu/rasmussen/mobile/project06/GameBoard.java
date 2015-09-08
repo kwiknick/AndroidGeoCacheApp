@@ -7,12 +7,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -38,50 +35,47 @@ public class GameBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         GPSListener gps = new GPSListener(GameBoard.this);
-        String latitudeS= "0";
-        String  longitudeS="0";
+        String latitudeS = "0";
+        String longitudeS = "0";
 
         // Check if GPS enabled
-        if(gps.canGetLocation()) {
+        if (gps.canGetLocation()) {
 
             latitudeS = String.valueOf(gps.getLatitude());
-             longitudeS = String.valueOf(gps.getLongitude());
+            longitudeS = String.valueOf(gps.getLongitude());
 
             // \n is for new line
             Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitudeS + "\nLong: " + longitudeS, Toast.LENGTH_LONG).show();
 
-             items =  findNearbylocations(latitudeS, longitudeS);
-
+            items = findNearbylocations(latitudeS, longitudeS);
 
 
             //Calculate each items distance
-               calculateDistance(latitudeS, longitudeS);
+            calculateDistance(latitudeS, longitudeS);
 
-             for(int j=0; j<items.size(); j++){
-                   if(items.get(j).getDistance()>50){
-                         items.remove(j);
-                   }
-             }
+            for (int j = 0; j < items.size(); j++) {
+                if (items.get(j).getDistance() > 50) {
+                    items.remove(j);
+                }
+            }
 
             setContentView(R.layout.activity_game_board);
-             for (int i=0; i<items.size(); i++){
-                   int count = i + 1;
-                 TextView tv=null;
-                 if(count==1) {
+            for (int i = 0; i < items.size(); i++) {
+                int count = i + 1;
+                TextView tv = null;
+                if (count == 1) {
                     tv = (TextView) findViewById(R.id.display_treasure1);
-                 }else if (count==2){
-                     tv = (TextView) findViewById(R.id.display_treasure2);
+                } else if (count == 2) {
+                    tv = (TextView) findViewById(R.id.display_treasure2);
 
-             }else if (count==3){
-                      tv = (TextView) findViewById(R.id.display_treasure3);
-                 }else if (count==4){
-                 tv = (TextView) findViewById(R.id.display_treasure4);
-                 }
+                } else if (count == 3) {
+                    tv = (TextView) findViewById(R.id.display_treasure3);
+                } else if (count == 4) {
+                    tv = (TextView) findViewById(R.id.display_treasure4);
+                }
 
-                 tv.setText(items.get(i).getDesc());
-             }
-
-
+                tv.setText(items.get(i).getDesc());
+            }
 
 
         } else {
@@ -99,7 +93,7 @@ public class GameBoard extends AppCompatActivity {
             public void onClick(View v) {
                 Item selectedItem = null;
                 selectedItem = items.get(0);
-                displayItem(v,selectedItem);
+                displayItem(v, selectedItem);
 
             }
         });
@@ -109,7 +103,7 @@ public class GameBoard extends AppCompatActivity {
             public void onClick(View v) {
                 Item selectedItem = null;
                 selectedItem = items.get(1);
-                displayItem(v,selectedItem);
+                displayItem(v, selectedItem);
 
             }
         });
@@ -121,7 +115,7 @@ public class GameBoard extends AppCompatActivity {
                 selectedItem = items.get(2);
                 displayItem(v, selectedItem);
 
-        }
+            }
         });
 
         treasure4.setOnClickListener(new View.OnClickListener() {
@@ -136,104 +130,105 @@ public class GameBoard extends AppCompatActivity {
 
     }
 
-     private void  calculateDistance(String latitude, String longitude){
+    private void calculateDistance(String latitude, String longitude) {
 
 
-             for(int i=0; i<items.size(); i++){
+        for (int i = 0; i < items.size(); i++) {
 
-                     double lat1 = Double.valueOf(latitude)/1E6;
-                     double lat2 = Double.valueOf(longitude)/1E6;
-                     double lon1 = Double.valueOf(items.get(i).getLat())/1E6;
-                     double lon2 = Double.valueOf(items.get(i).getLon())/1E6;
-                     double dLat = Math.toRadians(lat2-lat1);
-                     double dLon = Math.toRadians(lon2-lon1);
-                     double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                             Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
-                                     Math.sin(dLon/2) * Math.sin(dLon/2);
-                     double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-                    items.get(i).setDistance( 3959 * c);
+            double lat1 = Double.valueOf(latitude) / 1E6;
+            double lat2 = Double.valueOf(longitude) / 1E6;
+            double lon1 = Double.valueOf(items.get(i).getLat()) / 1E6;
+            double lon2 = Double.valueOf(items.get(i).getLon()) / 1E6;
+            double dLat = Math.toRadians(lat2 - lat1);
+            double dLon = Math.toRadians(lon2 - lon1);
+            double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            items.get(i).setDistance(3959 * c);
 
-             }
-     }
+        }
+    }
 
-     private List<Item> findNearbylocations( String latitude, String longitude){
+    private List<Item> findNearbylocations(String latitude, String longitude) {
 
-             String text = readFile();
-         List itemList = new ArrayList<Item>();
-         List contentList = new ArrayList<String>();
-         String content = null;
-         try {
+        String text = readFile();
+        List itemList = new ArrayList<Item>();
+        List contentList = new ArrayList<String>();
+        String content = null;
+        try {
 
-             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-             factory.setNamespaceAware(true);
-             XmlPullParser xpp = factory.newPullParser();
-             xpp.setInput(new StringReader(text));
-             int eventType = xpp.getEventType();
-             Item item = new Item();
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            XmlPullParser xpp = factory.newPullParser();
+            xpp.setInput(new StringReader(text));
+            int eventType = xpp.getEventType();
+            Item item = new Item();
 
 
-             while (eventType != XmlPullParser.END_DOCUMENT) {
-                 if (eventType == XmlPullParser.START_DOCUMENT) {
-                     System.out.println("Start document");
-                 } else if (eventType == XmlPullParser.START_TAG) {
-                     if (xpp.getName().equalsIgnoreCase("Description")) {
-                         item.setDesc(xpp.getAttributeValue(null, "desc"));
-                     } else if (xpp.getName().equalsIgnoreCase("name")) {
-                         item.setName(xpp.getAttributeValue(null, "name"));
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_DOCUMENT) {
+                    System.out.println("Start document");
+                } else if (eventType == XmlPullParser.START_TAG) {
+                    if (xpp.getName().equalsIgnoreCase("Description")) {
+                        item.setDesc(xpp.getAttributeValue(null, "desc"));
+                    } else if (xpp.getName().equalsIgnoreCase("name")) {
+                        item.setName(xpp.getAttributeValue(null, "name"));
 
-                 } else if (xpp.getName().equalsIgnoreCase("clue1")) {
-                     item.setClue1(xpp.getAttributeValue(null, "clue1"));
-                 }else if (xpp.getName().equalsIgnoreCase("clue2")) {
-                         item.setClue2(xpp.getAttributeValue(null, "clue2"));
+                    } else if (xpp.getName().equalsIgnoreCase("clue1")) {
+                        item.setClue1(xpp.getAttributeValue(null, "clue1"));
+                    } else if (xpp.getName().equalsIgnoreCase("clue2")) {
+                        item.setClue2(xpp.getAttributeValue(null, "clue2"));
 
-                 }else if (xpp.getName().equalsIgnoreCase("clue3")) {
-                     item.setClue3(xpp.getAttributeValue(null, "clue3"));
-                 }else if (xpp.getName().equalsIgnoreCase("points")) {
-                         item.setPrice(xpp.getAttributeValue(null, "points"));
-                     }
+                    } else if (xpp.getName().equalsIgnoreCase("clue3")) {
+                        item.setClue3(xpp.getAttributeValue(null, "clue3"));
+                    } else if (xpp.getName().equalsIgnoreCase("points")) {
+                        item.setPrice(xpp.getAttributeValue(null, "points"));
+                    }
 //                 } else if (xpp.getName().equalsIgnoreCase("latitude")) {
 //                         item.setLat(xpp.getAttributeValue(null, "latitude"));
-                     //}
-                     //}
-                     else if (xpp.getName().equalsIgnoreCase("longitude")) {
-                         item.setLon(xpp.getAttributeValue(null, "longitude"));
-                         itemList.add(item);
-                         item = new Item();
+                    //}
+                    //}
+                    else if (xpp.getName().equalsIgnoreCase("longitude")) {
+                        item.setLon(xpp.getAttributeValue(null, "longitude"));
+                        itemList.add(item);
+                        item = new Item();
 
-                     }
-                 }
-                 eventType = xpp.next();
+                    }
+                }
+                eventType = xpp.next();
 
-             }
+            }
 
-             System.out.println("End document");
-         } catch (Exception e) {
-             System.out.println( e);
-         }
-         return itemList;
-     }
+            System.out.println("End document");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return itemList;
+    }
 
-     public String readFile(){
+    public String readFile() {
 
-         //Read text from file
-         StringBuilder text = new StringBuilder();
+        //Read text from file
+        StringBuilder text = new StringBuilder();
 
-         try {
-             BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/example1.xml"));
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/example1.xml"));
 
-             String line = null;
+            String line = null;
 
-             while ((line = br.readLine()) != null) {
-                 text.append(line);
-             }
-             br.close();
-         } catch (Exception ioe) {
-             Log.e("error", "" + ioe.getMessage());
-             Toast.makeText(getBaseContext(), "File Not Found", Toast.LENGTH_SHORT).show();
-         }
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+            }
+            br.close();
+        } catch (Exception ioe) {
+            Log.e("error", "" + ioe.getMessage());
+            Toast.makeText(getBaseContext(), "File Not Found", Toast.LENGTH_SHORT).show();
+        }
 
-         return text.toString();
-     }
+        return text.toString();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
