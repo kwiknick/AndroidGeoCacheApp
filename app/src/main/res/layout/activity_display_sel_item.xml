@@ -8,10 +8,9 @@
     android:background="@color/material_blue_grey_800">
 
     <EditText
-        android:id="@+id/inputAnswer2Box"
+        android:id="@+id/answer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputAnswer1Box"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
@@ -21,12 +20,39 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#010101" />
-
+    <EditText
+        android:id="@+id/lat"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/answer"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="Enter Latitude"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
+    <EditText
+        android:id="@+id/lon"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lat"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:backgroundTint="#64ffffff"
+        android:gravity="center"
+        android:hint="Enter Longitude"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#010101" />
     <Button
         android:id="@+id/getCluesButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputAnswer2Box"
+        android:layout_below="@+id/lon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:onClick="getClues"

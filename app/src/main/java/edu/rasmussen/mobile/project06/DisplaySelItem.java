@@ -32,8 +32,13 @@ public class DisplaySelItem extends AppCompatActivity {
     public void getClues(){
 
          Item selectedItem = (Item) getIntent().getSerializableExtra("selectedItem");
-        TextView tv = (TextView) findViewById(R.id.inputAnswer2Box);
-          if(tv.getText().equals(selectedItem.getName())){
+        TextView tv = (TextView) findViewById(R.id.answer);
+        TextView tv1 = (TextView) findViewById(R.id.lat);
+        TextView tv2 = (TextView) findViewById(R.id.lon);
+           String answer = tv.getText().toString();
+           String lat = tv1.getText().toString();
+           String lon = tv2.getText().toString();
+          if(answer.equals(selectedItem.getName()) &&  lon.equals(selectedItem.getLon())){
               Toast.makeText(getApplicationContext(), "You Guessed it you get " + selectedItem.getPrice() + " points", Toast.LENGTH_LONG).show();
           }else{
                selectedItem.setGuess(selectedItem.getGuess() + 1);
@@ -43,7 +48,11 @@ public class DisplaySelItem extends AppCompatActivity {
                    selectedItem.setPrice("50");
                }else if (selectedItem.getGuess()==2){
                    Toast.makeText(getApplicationContext(), "Clue: " + selectedItem.getClue2() , Toast.LENGTH_LONG).show();
-                   selectedItem.setPrice("2");
+                   selectedItem.setPrice("50");
+
+               }else if (selectedItem.getGuess()==3){
+                   Toast.makeText(getApplicationContext(), "Clue: " + selectedItem.getClue3() , Toast.LENGTH_LONG).show();
+                   selectedItem.setPrice("1");
 
                }
 

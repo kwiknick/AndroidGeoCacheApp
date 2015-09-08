@@ -10,13 +10,32 @@ public class Item implements Serializable{
     String desc;
     String clue1;
     String clue2;
+    String clue3;
     String answer1;
     String answer2;
-    String lat;
+    String lat="0";
     String lon;
     String price;
     String name;
+    double distance;
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
     int guess=0;
+
+    public String getClue3() {
+        return clue3;
+    }
+
+    public void setClue3(String clue3) {
+        this.clue3 = clue3;
+    }
 
     public int getGuess() {
         return guess;

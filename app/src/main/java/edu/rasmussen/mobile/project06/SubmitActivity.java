@@ -26,8 +26,8 @@ import java.io.FileOutputStream;
 public class SubmitActivity extends AppCompatActivity {
 
     Button submit;
-    EditText description, street, city, state, zip, clue1, clue2, answer1, answer2;
-    String descriptionS, streetS, cityS, stateS, zipS, clue1S, clue2s, answer1s, answer2s;
+    EditText description, street, city, state, zip, clue1, clue2, clue3, name;
+    String descriptionS, streetS, cityS, stateS, zipS, clue1S, clue2s, clue3s, nameS;
     FileOutputStream myFile;
     XmlSerializer serializer;
 
@@ -43,8 +43,9 @@ public class SubmitActivity extends AppCompatActivity {
         zip = (EditText) findViewById(R.id.inputZipCodeBox);
         clue1 =  (EditText) findViewById(R.id.inputClue1Box);
         clue2 =  (EditText) findViewById(R.id.inputClue2Box);
-        answer1 =  (EditText) findViewById(R.id.inputAnswer1Box);
-        answer2 =  (EditText) findViewById(R.id.inputAnswer2Box);
+        clue3 = (EditText) findViewById(R.id.inputClue3Box);
+        name =  (EditText) findViewById(R.id.inputNameBox);
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +57,8 @@ public class SubmitActivity extends AppCompatActivity {
                 zipS = zip.getText().toString();
                 clue1S = clue1.getText().toString();
                 clue2s = clue2.getText().toString();
-                answer1s = answer1.getText().toString();
-                answer2s = answer2.getText().toString();
+                clue3s=clue3.getText().toString();
+                nameS = name.getText().toString();
                 Context gpsContext = getApplicationContext();
                 String gpsMessage = "GPS in Progress, Please Wait.";
                 int tDuration;
@@ -83,10 +84,10 @@ public class SubmitActivity extends AppCompatActivity {
                 }
                 // create the initial xml document if it already does not exist
                 try {
-                    File filename = new File(getFilesDir(), "example.xml");
+                    File filename = new File(getFilesDir(), "example1.xml");
 
                     if (!filename.exists()) {
-                        myFile = openFileOutput("example.xml", Activity.MODE_APPEND);
+                        myFile = openFileOutput("example1.xml", Activity.MODE_APPEND);
 
                         // create a new XmlSerializer object
                         serializer = Xml.newSerializer();
@@ -103,7 +104,7 @@ public class SubmitActivity extends AppCompatActivity {
                           writeItem(latitudeS, longitudeS);
                     } else {
                         // use myFile as your xml serializer and set to UTF-8 encoding
-                        myFile = openFileOutput("example.xml", Activity.MODE_APPEND);
+                        myFile = openFileOutput("example1.xml", Activity.MODE_APPEND);
 
                         // create a new XmlSerializer object
                         serializer = Xml.newSerializer();
@@ -149,6 +150,10 @@ try {
     serializer.startTag(null, "items");
     serializer.startTag(null, "treasure");
 
+    serializer.startTag(null, "name");
+    serializer.attribute(null, "name", nameS);
+    serializer.endTag(null, "name");
+
     serializer.startTag(null, "description");
     serializer.attribute(null, "desc", descriptionS);
     serializer.endTag(null, "description");
@@ -187,14 +192,9 @@ try {
     serializer.endTag(null, "clue2");
 
 
-    serializer.startTag(null, "answer1");
-    serializer.attribute(null, "answer1", answer1s);
-    serializer.endTag(null, "answer1");
-
-    serializer.startTag(null, "answer2");
-    serializer.attribute(null, "answer2", answer2s);
-    serializer.endTag(null, "answer2");
-
+    serializer.startTag(null, "clue3");
+    serializer.attribute(null, "clue3", clue3s);
+    serializer.endTag(null, "clue3");
 
     serializer.startTag(null, "points");
     serializer.attribute(null, "points", "100");

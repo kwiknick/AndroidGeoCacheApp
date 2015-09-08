@@ -53,6 +53,16 @@ public class GameBoard extends AppCompatActivity {
              items =  findNearbylocations(latitudeS, longitudeS);
 
 
+
+            //Calculate each items distance
+               calculateDistance(latitudeS, longitudeS);
+
+             for(int j=0; j<items.size(); j++){
+                   if(items.get(j).getDistance()>50){
+                         items.remove(j);
+                   }
+             }
+
             setContentView(R.layout.activity_game_board);
              for (int i=0; i<items.size(); i++){
                    int count = i + 1;
@@ -126,6 +136,26 @@ public class GameBoard extends AppCompatActivity {
 
     }
 
+     private void  calculateDistance(String latitude, String longitude){
+
+
+             for(int i=0; i<items.size(); i++){
+
+                     double lat1 = Double.valueOf(latitude)/1E6;
+                     double lat2 = Double.valueOf(longitude)/1E6;
+                     double lon1 = Double.valueOf(items.get(i).getLat())/1E6;
+                     double lon2 = Double.valueOf(items.get(i).getLon())/1E6;
+                     double dLat = Math.toRadians(lat2-lat1);
+                     double dLon = Math.toRadians(lon2-lon1);
+                     double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                             Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                                     Math.sin(dLon/2) * Math.sin(dLon/2);
+                     double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                    items.get(i).setDistance( 3959 * c);
+
+             }
+     }
+
      private List<Item> findNearbylocations( String latitude, String longitude){
 
              String text = readFile();
@@ -148,16 +178,18 @@ public class GameBoard extends AppCompatActivity {
                  } else if (eventType == XmlPullParser.START_TAG) {
                      if (xpp.getName().equalsIgnoreCase("Description")) {
                          item.setDesc(xpp.getAttributeValue(null, "desc"));
-                     } else if (xpp.getName().equalsIgnoreCase("clue1")) {
-                         item.setClue1(xpp.getAttributeValue(null, "clue1"));
-                     } else if (xpp.getName().equalsIgnoreCase("clue2")) {
-                         item.setClue1(xpp.getAttributeValue(null, "clue2"));
-                     } else if (xpp.getName().equalsIgnoreCase("answer1")) {
-                         item.setClue1(xpp.getAttributeValue(null, "answer1"));
-                     } else if (xpp.getName().equalsIgnoreCase("answer2")) {
-                         item.setClue1(xpp.getAttributeValue(null, "answer2"));
-                     } else if (xpp.getName().equalsIgnoreCase("points")) {
-                         item.setPrice(xpp.getAttributeValue(null, "price"));
+                     } else if (xpp.getName().equalsIgnoreCase("name")) {
+                         item.setName(xpp.getAttributeValue(null, "name"));
+
+                 } else if (xpp.getName().equalsIgnoreCase("clue1")) {
+                     item.setClue1(xpp.getAttributeValue(null, "clue1"));
+                 }else if (xpp.getName().equalsIgnoreCase("clue2")) {
+                         item.setClue2(xpp.getAttributeValue(null, "clue2"));
+
+                 }else if (xpp.getName().equalsIgnoreCase("clue3")) {
+                     item.setClue3(xpp.getAttributeValue(null, "clue3"));
+                 }else if (xpp.getName().equalsIgnoreCase("points")) {
+                         item.setPrice(xpp.getAttributeValue(null, "points"));
                      }
 //                 } else if (xpp.getName().equalsIgnoreCase("latitude")) {
 //                         item.setLat(xpp.getAttributeValue(null, "latitude"));
@@ -187,7 +219,7 @@ public class GameBoard extends AppCompatActivity {
          StringBuilder text = new StringBuilder();
 
          try {
-             BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/example.xml"));
+             BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/example1.xml"));
 
              String line = null;
 

@@ -35,66 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //readFile();
 
-        //Read text from file
-        StringBuilder text = new StringBuilder();
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/example.xml"));
-
-            String line = null;
-
-            while ((line = br.readLine()) != null) {
-                text.append(line);
-            }
-            br.close();
-        } catch (Exception ioe) {
-            Log.e("error", "" + ioe.getMessage());
-            Toast.makeText(getBaseContext(), "File Not Found", Toast.LENGTH_SHORT).show();
-        }
-        String content = null;
-        try {
-
-            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-            factory.setNamespaceAware(true);
-            XmlPullParser xpp = factory.newPullParser();
-            xpp.setInput(new StringReader(text.toString()));
-            int eventType = xpp.getEventType();
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_DOCUMENT) {
-                    System.out.println("Start document");
-                } else if (eventType == XmlPullParser.START_TAG) {
-                    if (xpp.getName().equalsIgnoreCase("Description")) {
-                        if(content==null) {
-                            content = "Description: " + xpp.getAttributeValue(null, "desc");
-                        }
-                        else {
-                            content = content + "\n**************\nDescription: " + xpp.getAttributeValue(null, "desc");
-                        }
-                    } else if (xpp.getName().equalsIgnoreCase("street")) {
-                        content = content + "\nStreet: " + xpp.getAttributeValue(null, "street");
-                    } else if (xpp.getName().equalsIgnoreCase("city")) {
-                        content = content + "\nCity: " + xpp.getAttributeValue(null, "city");
-                    } else if (xpp.getName().equalsIgnoreCase("state")) {
-                        content = content + "\nState: " + xpp.getAttributeValue(null, "state");
-                    } else if (xpp.getName().equalsIgnoreCase("zip")) {
-                        content = content + "\nZip: " + xpp.getAttributeValue(null, "zip");
-                    } else if (xpp.getName().equalsIgnoreCase("latitude")) {
-                        content = content + "\nLatitude: " + xpp.getAttributeValue(null, "latitude");
-                    } else if (xpp.getName().equalsIgnoreCase("longitude")) {
-                        content = content + "\nLongitude: " + xpp.getAttributeValue(null, "longitude");
-                    }
-
-                }
-                eventType = xpp.next();
-            }
-            System.out.println("End document");
-        } catch (Exception e) {
-            Log.e("error", "" + e.getMessage());
-        }
-        TextView tv = (TextView) findViewById(R.id.display_file);
-        if (content != null) {
-            tv.setText(content);
-        }
 
     }
 

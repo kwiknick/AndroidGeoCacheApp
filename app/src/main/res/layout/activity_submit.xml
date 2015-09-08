@@ -115,7 +115,7 @@
         android:textColor="#010101" />
 
     <EditText
-        android:id="@+id/inputAnswer1Box"
+        android:id="@+id/inputClue3Box"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputClue2Box"
@@ -130,7 +130,7 @@
         android:textColor="#010101" />
 
     <EditText
-        android:id="@+id/inputAnswer2Box"
+        android:id="@+id/inputNameBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputAnswer1Box"
@@ -139,7 +139,7 @@
         android:background="#ffffff"
         android:backgroundTint="#64ffffff"
         android:gravity="center"
-        android:hint="Please Enter A Clue Answer"
+        android:hint="Please Enter the name of the treasure"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#010101" />
@@ -148,7 +148,7 @@
         android:id="@+id/submitButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputAnswer2Box"
+        android:layout_below="@+id/inputNameBox"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:onClick="SubmitLocation"
