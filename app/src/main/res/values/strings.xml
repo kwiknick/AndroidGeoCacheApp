@@ -10,6 +10,6 @@
     <string name="streetInstructionsText">Please Enter Street Address</string>
     <string name="descriptionInstructionsText">Please Enter A Description</string>
     <string name="newLocationButtonText">Add A New Location</string>
-    <string name="title_activity_game_board">GameBoard</string>
-    <string name="title_activity_display_sel_item">DisplaySelItem</string>
+    <string name="title_activity_game_board">Game Board</string>
+    <string name="title_activity_display_sel_item">Display Selected Item</string>
 </resources>

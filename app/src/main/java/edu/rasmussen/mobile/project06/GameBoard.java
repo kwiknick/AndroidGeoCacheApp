@@ -67,7 +67,6 @@ public class GameBoard extends AppCompatActivity {
                     tv = (TextView) findViewById(R.id.display_treasure1);
                 } else if (count == 2) {
                     tv = (TextView) findViewById(R.id.display_treasure2);
-
                 } else if (count == 3) {
                     tv = (TextView) findViewById(R.id.display_treasure3);
                 } else if (count == 4) {
@@ -213,7 +212,7 @@ public class GameBoard extends AppCompatActivity {
         StringBuilder text = new StringBuilder();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/example1.xml"));
+            BufferedReader br = new BufferedReader(new FileReader("/data/data/edu.rasmussen.mobile.project06/files/locations.xml"));
 
             String line = null;
 
