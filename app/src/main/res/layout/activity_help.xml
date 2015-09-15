@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/map_background"
+    android:orientation="vertical" >
+    <ScrollView android:id="@+id/ScrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="6dip"
+            >
+            <TextView
+                android:id="@+id/help_page_intro"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:text="@string/help_page_intro"
+                android:padding="2dip"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:textColor="#000000"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,52 +1,22 @@
 package edu.rasmussen.mobile.project06;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
-
-    public void newLocation(View view) {
-        Intent intent = new Intent(this, SubmitActivity.class);
-        startActivity(intent);
-    }
-
-    public void gameScreen(View view) {
-        Intent intent = new Intent(this, GameBoard.class);
-        startActivity(intent);
-    }
-
-    public void smsScreen(View view) {
-        Intent intent = new Intent(this, SmsScreen.class);
-        startActivity(intent);
-    }
-
-    public void loginScreen(View view) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
-    }
-
-    public void helpScreen(View view) {
-        Intent intent = new Intent(this, Help.class);
-        startActivity(intent);
-    }
+public class Help extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //readFile();
-
-
+        setContentView(R.layout.activity_help);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_help, menu);
         return true;
     }
 
