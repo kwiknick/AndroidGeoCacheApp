@@ -77,4 +77,13 @@
         android:gravity="center"
         android:textColor="#010101"
         android:layout_marginTop="15dp"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sendSMSScreenBtn"
+        android:text="SMS Screen"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="smsScreen"/>
 </RelativeLayout>

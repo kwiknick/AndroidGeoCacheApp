@@ -29,6 +29,10 @@ public class GameBoard extends AppCompatActivity {
         intent.putExtra("selectedItem", selectedItem);
         startActivity(intent);
     }
+    public void smsScreen(View view) {
+        Intent intent = new Intent(this, SmsScreen.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

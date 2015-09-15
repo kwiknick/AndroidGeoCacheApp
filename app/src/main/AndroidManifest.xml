@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -54,6 +56,17 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+
+        <receiver android:name=".SmsReceiver" >
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECIEVED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".SmsScreen"
+            android:label="@string/title_activity_sms_screen" >
         </activity>
     </application>
 

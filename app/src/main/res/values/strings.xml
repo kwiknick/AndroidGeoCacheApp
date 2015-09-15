@@ -12,4 +12,5 @@
     <string name="newLocationButtonText">Add A New Location</string>
     <string name="title_activity_game_board">Game Board</string>
     <string name="title_activity_display_sel_item">Display Selected Item</string>
+    <string name="title_activity_sms_screen">SmsScreen</string>
 </resources>
