@@ -19,6 +19,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void smsScreen(View view) {
+        Intent intent = new Intent(this, SmsScreen.class);
+        startActivity(intent);
+    }
+
+    public void loginScreen(View view) {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

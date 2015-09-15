@@ -13,4 +13,7 @@
     <string name="title_activity_game_board">Game Board</string>
     <string name="title_activity_display_sel_item">Display Selected Item</string>
     <string name="title_activity_sms_screen">SmsScreen</string>
+    <string name="title_activity_login">Login</string>
+    <string name="userNameTextForTextField">Username</string>
+    <string name="passwordTextForTextField">Password</string>
 </resources>
