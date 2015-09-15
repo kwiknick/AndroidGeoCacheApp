@@ -18,4 +18,7 @@
     <string name="passwordTextForTextField">Password</string>
     <string name="title_activity_help">Help</string>
     <string name="help_page_intro">Welcome to the Find Treasures App Help page.  To get started you can login by going to the Login Screen, or continue as guest.  The premise of the game is to try to guess the name and coordinates of the treasures around you.  You\'ll be presented with clues, and with each clue, your amount of points decreases.  Good Luck and Have Fun.</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="aboutMeText">Hello All.  I\'m just a normal 30 something year old trying my hand at this programming thing.  I enjoy bowhunting and partying.  I have competed in 4 hackathons and currently hold a Salesforce Admin Certification.  If you would like anymore information feel free to inbox me.</string>
+
 </resources>

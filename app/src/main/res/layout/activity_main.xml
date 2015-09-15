@@ -12,7 +12,7 @@
         android:text="@string/newLocationButtonText"
         android:id="@+id/addNewLocationButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="35dp"
         android:onClick="newLocation"/>
 
     <Button
@@ -51,6 +51,16 @@
         android:layout_below="@+id/loginScreenBtn"
         android:layout_marginTop="25dp"
         android:onClick="helpScreen"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profileScreenBtn"
+        android:text="Current Profile"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/helpScreenBtn"
+        android:layout_marginTop="25dp"
+        android:onClick="profileScreen"/>
 
 
 </RelativeLayout>

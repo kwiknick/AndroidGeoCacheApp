@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="edu.rasmussen.mobile.project06.Profile"
+    android:background="@drawable/map_background">
+
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/android_devil"
+        android:id="@+id/profPic"/>
+
+    <TextView
+        android:text=" Welcome Guest! "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profPic"
+        android:layout_marginTop="15dp"
+        android:id="@+id/welcome"
+        android:background="#ffffff"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:text=" Work: Freelance Software Developer "
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome"
+        android:layout_marginTop="5dp"
+        android:id="@+id/work"
+        android:background="#ffffff"
+        android:backgroundTint="#B8B8B8"/>
+
+    <TextView
+        android:text=" School: Rasmussen College Class of 2016 "
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/work"
+        android:layout_marginTop="5dp"
+        android:id="@+id/school"
+        android:background="#ffffff"
+        android:backgroundTint="#B8B8B8"/>
+
+    <TextView
+        android:text="@string/aboutMeText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/school"
+        android:layout_marginTop="5dp"
+        android:id="@+id/aboutMe"
+        android:background="#ffffff"
+        android:backgroundTint="#B8B8B8"/>
+
+</RelativeLayout>

@@ -22,8 +22,10 @@
                 android:padding="2dip"
                 android:layout_weight="1"
                 android:background="#ffffff"
+                android:backgroundTint="#B8B8B8"
                 android:textColor="#000000"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+
                 />
 
         </LinearLayout>
